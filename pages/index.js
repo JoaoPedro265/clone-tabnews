@@ -1,4 +1,4 @@
 function Home(){
-    return <h1>JP, vc consegue</h1>
+    return <h1>Tu é muito gay Wine, abre logoseuKupra min!</h1>
 }
 export default Home
