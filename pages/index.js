@@ -1,5 +1,5 @@
 function Home() {
-  return <h1>Tu é muito gay Wine, abre logoseuKupra min!</h1>;
+  return <h1>Em Construção... verei o que posso fazer</h1>;
 }
 
 export default Home;
