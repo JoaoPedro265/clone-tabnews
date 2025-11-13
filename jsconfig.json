@@ -1,0 +1,6 @@
+//absolute imports
+{
+  "compilerOptions": {
+    "baseUrl": "." //basse absoluto pra todos os importe é a pasta raiz pre frente
+  }
+}
