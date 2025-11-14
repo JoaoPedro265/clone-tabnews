@@ -4,9 +4,12 @@
   "description": "projects curso.dev",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "lint:check": "prettier --check .",
+    "dev": "npm run serveces:up && next dev",
     "lint:fix": "prettier --write .",
+    "lint:check": "prettier --check .",
+    "serveces:up": "docker compose -f infra/compose.yaml up -d",
+    "serveces:stop": "docker compose -f infra/compose.yaml stop",
+    "serveces:down": "docker compose -f infra/compose.yaml down",
     "test": "jest",
     "test:watch": "jest --watchAll"
   },
