@@ -9,9 +9,14 @@ async function query(queryObject) {
     password: process.env.POSTGRES_PASSWORD,
   }); //cria um objeto pra se conectar ao db
   await client.connect(); //conectar no db
-  const result = await client.query(queryObject); //recebe qualquer query do codigo
-  await client.end();
-  return result;
+  try {
+    const result = await client.query(queryObject); //recebe qualquer query do codigo
+    return result; //É o objeto que o PostgreSQL devolve depois que você executa uma query.
+  } catch (error) {
+    console.log(error);
+  } finally {
+    await client.end();
+  }
 }
 
 export default {
