@@ -4,7 +4,6 @@ import database from "infra/database.js";
 
 async function status(request, response) {
   const updateAt = new Date().toISOString(); //data:iso 8601
-
   const databaseVersionResult = await database.query("SHOW server_version;"); //consulta ao BD
   const databaseVersionValue = databaseVersionResult.rows[0].server_version;
 
@@ -14,6 +13,7 @@ async function status(request, response) {
   const databaseMaxConnectionsValue =
     databaseMaxConnectionsResult.rows[0].max_connections;
 
+  //projeter de sql injection, com Parameterized query do pg
   const databaseName = process.env.POSTGRES_DB;
   const databaseOpenedConnectionsResult = await database.query({
     text: "SELECT count(*)::int FROM pg_stat_activity WHERE datname= $1;",
@@ -21,6 +21,7 @@ async function status(request, response) {
   });
 
   console.log(databaseOpenedConnectionsResult);
+  //console.log(databaseOpenedConnectionsValue);
   const databaseOpenedConnectionsValue =
     databaseOpenedConnectionsResult.rows[0].count;
 
